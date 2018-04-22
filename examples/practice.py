@@ -1,14 +1,21 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@desc:
+@author: z3r0610ck
+@contact: z3roblock@icloud.com
+@software: Atom  @since:python 3.6.4 on 2018/4/23
+"""
+import os
 import random
 import asyncio
 import aiohttp
-import configparser
 from discord import Game
 from discord.ext.commands import Bot
 
 
-cp = configparser.SafeConfigParser()
-cp.read('settings.conf')
-BOT_PREFIX = ("?", "!")
+BOT_PREFIX = os.environ.get(BOT_PREFIX)
+TOKEN = os.environ.get(TOKEN)
 
 client = Bot(command_prefix=BOT_PREFIX)
 
@@ -76,17 +83,7 @@ async def list_servers():
             print(server.name)
         await asyncio.sleep(600)
 
-def getConfig(sk):
-    value = None
-    try:
-        value = cp.get(ss, sk)
-    except Exception as e:
-        pass
-    return value
 
 if __name__ == "__main__":
-    ss = 'TwitCord'
-    #BOT_PREFIX = getConfig('BOT_PREFIX')
-    TOKEN = getConfig('API_TOKEN')
     client.loop.create_task(list_servers())
     client.run(TOKEN)
