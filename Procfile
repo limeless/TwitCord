@@ -1,1 +1,1 @@
-worker: python examples/practice.py
+worker: python practice.py
