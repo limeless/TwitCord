@@ -12,6 +12,13 @@ import asyncio
 import aiohttp
 from discord import Game
 from discord.ext.commands import Bot
+from flask import Flask
+
+
+app = Flask(__name__)
+@app.route("/monitor") #Hey Heroku magic.
+def monitoring():
+    return "200"
 
 
 BOT_PREFIX = ("?", "!", "!tc")
