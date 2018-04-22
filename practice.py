@@ -14,7 +14,7 @@ from discord import Game
 from discord.ext.commands import Bot
 
 
-BOT_PREFIX = os.environ.get('PREFIX')
+BOT_PREFIX = ("?", "!", "!tc")
 TOKEN = os.environ.get('TOKEN')
 
 client = Bot(command_prefix=BOT_PREFIX)
