@@ -16,7 +16,7 @@ from flask import Flask
 
 
 app = Flask(__name__)
-@app.route("/monitor") #Hey Heroku magic.
+@app.route("/") #Hey Heroku magic.
 def monitoring():
     return "200"
 
@@ -94,3 +94,5 @@ async def list_servers():
 if __name__ == "__main__":
     client.loop.create_task(list_servers())
     client.run(TOKEN)
+    app.jinja_env.cache = {}
+    app.run()
